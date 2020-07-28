@@ -2,11 +2,12 @@
 
 namespace Tests\Unit;
 
-use App\Post;
+use App\Plan;
 use Tests\TestCase;
 
 class PostTest extends TestCase
 {
+
     public function test_can_create_post() {
 
         $data = [
@@ -19,23 +20,7 @@ class PostTest extends TestCase
             ->assertJson($data);
     }
 
-    public function test_can_update_post() {
-
-        $post = factory(Post::class)->create();
-
-        $data = [
-            'title' => $this->faker->sentence,
-            'content' => $this->faker->paragraph
-        ];
-
-        $this->put(route('posts.update', $post->id), $data)
-            ->assertStatus(200)
-            ->assertJson($data);
-    }
-
-    public function test_can_show_post() {
-
-        $post = factory(Post::class)->create();
+    public function test_can_show_plan() {
 
         $this->get(route('posts.show', $post->id))
             ->assertStatus(200);
